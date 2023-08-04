@@ -1,5 +1,4 @@
 import { defineConfig } from 'vite';
-import { RouteObject } from 'react-router';
 import react from '@vitejs/plugin-react';
 import pages from 'vite-plugin-pages';
 import path from 'path';
@@ -7,9 +6,6 @@ import viteYAML from '@modyfi/vite-plugin-yaml';
 import mdx from '@mdx-js/rollup';
 import remarkGFM from 'remark-gfm';
 
-interface sp45_RouteObject extends RouteObject {
-  name?: string;
-}
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -22,17 +18,7 @@ export default defineConfig({
     mdx({ remarkPlugins: [remarkGFM] }),
     react(),
     viteYAML(),
-    pages({
-      onRoutesGenerated: (routes: sp45_RouteObject[]) => {
-        routes.forEach((route) => {
-          route.name = route.path;
-          if (route.path === 'Home') {
-            route.path = '/';
-          }
-          return route;
-        });
-      },
-    }),
+    pages(),
   ],
   resolve: {
     alias: {

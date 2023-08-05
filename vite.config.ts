@@ -8,18 +8,23 @@ import remarkGFM from 'remark-gfm';
 
 // https://vitejs.dev/config/
 export default defineConfig(({mode}) => {
+  const baseURL = mode === "development" ? '/' : '/SFWebsite/';
   return {
     esbuild: {
       define: {
         this: 'window',
       },
     },
-    base: mode === "development" ? '/' : '/',
+    base: baseURL,
     plugins: [
       mdx({ remarkPlugins: [remarkGFM] }),
       react(),
       viteYAML(),
-      pages(),
+      pages({
+        dirs:[
+          {dir: "./src/pages/", baseRoute: baseURL}
+        ]
+      }),
     ],
     resolve: {
       alias: {

@@ -2,7 +2,7 @@ import { isPathIncluded } from '@libs/isPathIncluded';
 import { Link as RouterLink } from 'react-router-dom';
 import { MenuList, MenuItem as Item, Link } from '@mui/material';
 import { capitalize } from 'lodash';
-import { sp45_RouteObject } from '@typings';
+import { type sp45_RouteObject } from '@typings';
 
 interface MenuItemProps {
   routes: sp45_RouteObject[];
@@ -35,8 +35,7 @@ const getMenuItems = (params: MenuItemProps): React.ReactNode => {
       isPathIncluded(route.path, params.checkers, params.isExcluded).length ===
         0
     ) {
-      // if (params.useChildren === true) {
-      // }
+
       const path =
         route.name.toLowerCase() !== 'home'
           ? `/${route.name.toLowerCase()}`

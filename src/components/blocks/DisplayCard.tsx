@@ -1,4 +1,4 @@
-import { Box, BoxProps, Button } from '@mui/material';
+import { Box, type BoxProps, Button } from '@mui/material';
 
 interface DisplayCardProps extends BoxProps {
   useCardPadding?: boolean;

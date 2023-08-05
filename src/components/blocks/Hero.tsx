@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Box, IconButton } from '@mui/material';
 import { ExpandMore } from '@mui/icons-material';
 import { useScrollBy } from 'react-use-window-scroll';
-import { Rect, useRect } from 'react-use-rect';
+import { type Rect, useRect } from 'react-use-rect';
 
 interface HeroProps {
   children: React.ReactNode;
@@ -27,7 +27,7 @@ export const Hero = (props: HeroProps): JSX.Element => {
 
     window.addEventListener('scroll', onScroll);
     setCurrentY(window.scrollY);
-    return () => window.removeEventListener('scroll', onScroll);
+    return () => { window.removeEventListener('scroll', onScroll); };
   }, [scrolling]);
 
   return (
@@ -58,11 +58,11 @@ export const Hero = (props: HeroProps): JSX.Element => {
             }}
             title='clickToNextComponent'
             onClick={() =>
-              scrollBy({
+              { scrollBy({
                 top: rect !== null ? rect.height - currentY : 500 - currentY,
                 left: 0,
                 behavior: 'smooth',
-              })
+              }); }
             }
           >
             <ExpandMore />

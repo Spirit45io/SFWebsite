@@ -1,5 +1,5 @@
-import { RouteObject } from 'react-router';
+import { type NonIndexRouteObject  } from 'react-router';
 
-export interface sp45_RouteObject extends RouteObject {
+export interface sp45_RouteObject extends NonIndexRouteObject  {
   name?: string;
 }

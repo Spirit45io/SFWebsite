@@ -1,4 +1,4 @@
-import { Typography, TypographyProps } from '@mui/material';
+import { Typography, type TypographyProps } from '@mui/material';
 // import styles from '@assets/styles/styles.module.css';
 
 export const Logo = (props: TypographyProps): JSX.Element => {

@@ -1,23 +1,20 @@
 import * as React from 'react';
-import { Box, BoxProps } from '@mui/material';
+import { Box, type BoxProps } from '@mui/material';
 import { setHideOnMobile } from '@libs/setHideOnMobile';
+
 
 interface RowProps extends BoxProps {
   hideOnMobile?: number[];
-  children: React.ReactElement[] | React.ReactElement;
+  children: React.ReactElement | React.ReactElement[];
   id: string;
 }
 
-export const Row = ({ ...props }: RowProps): JSX.Element => {
-  const { id, children, hideOnMobile, justifyContent, ...attr } = props;
-
-  const editedChildren = Array.isArray(children)
-    ? children.map((child, index) => {
-        return React.cloneElement(child, {
-          key: `${id}-${index}`,
-        });
-      })
-    : children;
+export const Row = ({ id, children, hideOnMobile, justifyContent, ...attr }: RowProps): JSX.Element => {
+  const editedChildren = React.Children.map(children, (child, index) => {
+    return React.cloneElement(child, {
+      key: `${id}-${index}`,
+    });
+  });
 
   return (
     <div id={id}>
@@ -25,10 +22,8 @@ export const Row = ({ ...props }: RowProps): JSX.Element => {
         paddingX={['1rem', '3rem']}
         {...attr}
         display='flex'
-        flexWrap={'wrap'}
-        justifyContent={
-          React.Children.count(editedChildren) === 1 ? 'center' : justifyContent
-        }
+        flexWrap='wrap'
+        justifyContent={editedChildren.length === 1 ? 'center' : justifyContent}
       >
         {hideOnMobile !== undefined && Array.isArray(editedChildren)
           ? setHideOnMobile(editedChildren, hideOnMobile)

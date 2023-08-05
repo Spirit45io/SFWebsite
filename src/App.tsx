@@ -6,6 +6,7 @@ import { MenuButton, Loader, MainMenu } from '@components';
 import routes from '~react-pages';
 
 const Routes = (): React.ReactElement | null => {
+  console.log(routes);
   return useRoutes(routes);
 };
 

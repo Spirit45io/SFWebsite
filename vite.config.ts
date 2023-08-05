@@ -14,7 +14,7 @@ export default defineConfig(({mode}) => {
         this: 'window',
       },
     },
-    base: mode === "development" ? '/' : 'SFWebsite',
+    base: mode === "development" ? '/' : '/',
     plugins: [
       mdx({ remarkPlugins: [remarkGFM] }),
       react(),

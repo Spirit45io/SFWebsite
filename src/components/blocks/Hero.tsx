@@ -7,6 +7,7 @@ import { type Rect, useRect } from 'react-use-rect';
 interface HeroProps {
   children: React.ReactNode;
   bgColor: string;
+  bgImage: string;
   color?: string;
   banner?: React.ReactNode;
   iconCaption?: React.ReactNode;
@@ -42,6 +43,8 @@ export const Hero = (props: HeroProps): JSX.Element => {
       color={props.color ?? 'inherit'}
       ref={rectRef}
     >
+      <Box>{props.bgImage}</Box>
+
       <Box>{props.banner}</Box>
       {props.children}
       <Box

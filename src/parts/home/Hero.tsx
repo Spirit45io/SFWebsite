@@ -13,6 +13,7 @@ export const Hero = (): JSX.Element => {
       bgColor={'rgba(200,123,43,1)'}
       color='white'
       iconCaption={<IconCaption />}
+      bgImage={'url("https://pixabay.com/photos/bride-groom-couple-love-wedding-8182890/")'}
     >
       <Row id='HeroHome' flexDirection={'column'}>
         {/* <Logo variant='h1' fontSize={['4rem', '6rem', '8rem']} /> */}

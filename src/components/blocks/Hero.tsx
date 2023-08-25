@@ -43,7 +43,14 @@ export const Hero = (props: HeroProps): JSX.Element => {
       color={props.color ?? 'inherit'}
       ref={rectRef}
     >
-      <Box>{props.bgImage}</Box>
+      <Box
+        sx={{
+          backgroundImage: 'url("https://pixabay.com/photos/workspace-coffee-laptop-macbook-1280538/")',
+          backgroundSize: 'cover',
+          width: '100%',
+          height: '100%'
+        }}  
+      />
 
       <Box>{props.banner}</Box>
       {props.children}
